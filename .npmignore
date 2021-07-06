@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+/img
+/node_modules
+/test
+/src
+.npmrc
+.gitignore
+.eslintrc.json
+bower.json
+Gruntfile.js
+package-lock.json
+.stylelintrc
+.
