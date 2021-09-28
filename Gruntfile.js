@@ -165,7 +165,6 @@ module.exports = grunt => {
               code[keyPath[0]] = fs.readFileSync(pathUtil.join(SRC_DIR_PATH, keyPath[1]), {encoding: 'utf8'})
                 .replace(keyPath[2] || reEXPORT, '$1');
             });
-
             const banner = `/*! ${PKG.title || PKG.name} v${PKG.version} (c) ${PKG.author.name} ${PKG.homepage} */\n`;
             return banner + minJs(preProc.removeTag('DEBUG',
               content.replace(/@INCLUDE\[code:([^\n]+?)\]@/g,
