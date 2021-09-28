@@ -63,6 +63,8 @@ declare namespace LeaderLine {
         gradient?: boolean | GradientOptions;
         dropShadow?: boolean | DropShadowOptions;
 
+        lineId?: string
+
         show?: boolean;
         hide?: boolean;
     }
@@ -106,7 +108,7 @@ declare namespace LeaderLine {
         radius?: number;
         height?: number | string;
         element?: Element;
-        points?: Array<[number|string, number|string]>;
+        points?: Array<[number | string, number | string]>;
         color?: string;
         fillColor?: string;
         size?: number;

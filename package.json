@@ -43,5 +43,7 @@
   },
   "bugs": "https://github.com/sango-tech/vue3-leaderline/issues",
   "license": "MIT",
-  "authors": "Rai Blaze"
+  "author": {
+    "name": "Rai Blaze"
+  }
 }

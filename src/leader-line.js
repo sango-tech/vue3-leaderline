@@ -116,7 +116,8 @@
       lineOutlineColor: 'indianred',
       lineOutlineSize: 0.25,
       plugOutlineEnabledSE: [false, false],
-      plugOutlineSizeSE: [1, 1]
+      plugOutlineSizeSE: [1, 1],
+      lineId: ''
     },
 
     isObject = (function() {
@@ -1133,7 +1134,9 @@
     traceLog.add('<updateLine>'); // [DEBUG/]
     var options = props.options, curStats = props.curStats, events = props.events,
       updated = false;
-
+    
+    props.svg.id = props.options.lineId
+    
     updated = setStat(props, curStats, 'line_color', options.lineColor, events.cur_line_color) || updated;
     updated = setStat(props, curStats, 'line_colorTra', getAlpha(curStats.line_color)[0] < 1) || updated;
     updated = setStat(props, curStats, 'line_strokeWidth', options.lineSize,
@@ -2668,6 +2671,9 @@
       null, 'lineOutlineSize', null, DEFAULT_OPTIONS.lineOutlineSize,
       function(value) { return value > 0 && value <= 0.48; }) || needs.lineOutline;
 
+    needs.lineId = setValidType(options, newOptions, 'lineId',
+      null, 'lineId', null, DEFAULT_OPTIONS.lineId, null, true) || needs.lineId;
+
     // PlugOutline
     ['startPlugOutline', 'endPlugOutline'].forEach(function(propName, i) {
       needs.plugOutline = setValidType(options, newOptions, propName,
@@ -3407,7 +3413,8 @@
           ['outlineColor', 'lineOutlineColor'], ['outlineSize', 'lineOutlineSize'],
         ['startPlugOutline', 'plugOutlineEnabledSE', 0], ['endPlugOutline', 'plugOutlineEnabledSE', 1],
           ['startPlugOutlineColor', 'plugOutlineColorSE', 0], ['endPlugOutlineColor', 'plugOutlineColorSE', 1],
-          ['startPlugOutlineSize', 'plugOutlineSizeSE', 0], ['endPlugOutlineSize', 'plugOutlineSizeSE', 1]]
+          ['startPlugOutlineSize', 'plugOutlineSizeSE', 0], ['endPlugOutlineSize', 'plugOutlineSizeSE', 1]],
+          ['lineId']
       .forEach(function(conf) {
         var propName = conf[0], optionName = conf[1], i = conf[2];
         Object.defineProperty(LeaderLine.prototype, propName, {
